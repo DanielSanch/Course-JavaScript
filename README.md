@@ -9,3 +9,6 @@ Notas de curso de JavaScript de freeCodeCamp
 
 ## Contratación
 Si quieres contratarme puedes escribirme a jesusdanielsar@gmai.com para consultas.
+
+## Instalación
+Este proyecto no necesita de instalación. Simplemente se encuentran los archivos distribuidos por temas.
