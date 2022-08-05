@@ -3,7 +3,7 @@
 Notas de curso de JavaScript de freeCodeCamp
 
 ## Autor 👨🏻‍💻
-**JESUS DANIEL SANCHE**
+**JESUS DANIEL SANCHEZ**
 
 * [LinkedIn](https://www.linkedin.com/in/danielsanch/)
 
