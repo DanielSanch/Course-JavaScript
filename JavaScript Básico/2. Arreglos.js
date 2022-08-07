@@ -76,7 +76,7 @@ let removedFromArray = myArray6.pop();
 
 const myArray7 = [["John", 23], ["cat", 2]];
 
-let removedFromArray2 = myArray7.pop(); 
+let removedFromArray2 = myArray7.shift(); 
 
 // myArray6 = [cat, 2]
 // removedFromArray = [John, 23]
