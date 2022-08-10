@@ -181,3 +181,81 @@ const { name, age } = user;
 
 // Para cambiar el nombre se usa el siguiente codigo
 const { name: userName, age: userAge } = user;
+
+
+
+
+
+//------------------------------------------------------------------------
+// ** Usa sintaxis de desestructuracion para asignar variables desde objetos anidados **
+
+const user1 = {
+    johnDoe: {
+        age1: 34,
+        email: 'johnDoe@freeCodeCamp.com'
+    }
+};
+
+// Con el mismo nombre
+const { johnDoe: { age1, email }} = user1;
+
+// Con nombre diferente
+const { johnDoe: {age: userAge1, email: userEmail}} = user1;
+
+
+
+
+
+//------------------------------------------------------------------------
+// ** Usa sintaxis de desestructuracion para asignar variables desde arreglos **
+
+const [a, b,,, c] = [1,2,3,4,5,6];
+console.log(a, b, c); // 1, 2, 5
+
+
+
+
+
+//------------------------------------------------------------------------
+// ** Utiliza la sistanxis de desestructuracion con el parametro rest para reasignar
+//                          elementos de un arreglo **
+
+/**
+ * Usando desestructuracion y rest
+ */
+
+const [x, y, ...arreglo] = [ 1, 2, 3, 4, 5, 7];
+console.log( x, y);     // 1, 2
+console.log(arreglo);   // 3, 4, 5, 7
+
+// Es el mismo resultado con Array.prototype.slice()
+// Rest solo funciona como el ultimo parametro
+
+
+
+
+
+//------------------------------------------------------------------------
+// ** Utiliza sintaxis de desestructuracion para pasar un objeto como parametro
+//                              de funcion **
+
+/**
+ * Podemos hacer el llamado de un objeto en una funcion como parametro y requerir
+ * algunos datos de este objeto especificamente, si es asi, podemos desestructurar
+ * desde el mismo llamado del parametro
+ */
+
+const profileUpdate = (profileData) => {
+    const { name, age, nationality, location } = profileData;
+    // Codigo de la funcion
+}
+
+// Forma reducida
+const profileUpdates = ({ name, age, nationality, location }) => {
+    // Codigo de la funcion 
+}
+
+
+
+
+
