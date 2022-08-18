@@ -158,8 +158,22 @@ console.log(result);
 
 
 //------------------------------------------------------------------------
-// ** Haz coincidir los numeros y las letras del  alfabeto **
+// ** Haz coincidir caracteres que aparecen una o mas veces **
 
-// Hacer coincidir las letras y/o numeros
-// /[0-5]/
-// /[a-z0-9]/ig
+// Caracter +
+// /a+/g
+// abc => "a"
+// aabc => "aa"
+// abab => "a", "a"
+
+
+
+
+//------------------------------------------------------------------------
+// ** Haz coincidir caracteres que aparecen cero o mas veces **
+
+// Caracter *
+// /go*/
+// "gooooooal!" => gooooooo
+// "gut" => g
+// "over" => null
