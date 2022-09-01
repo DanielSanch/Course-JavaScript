@@ -256,3 +256,98 @@ Bird.prototype = {
       console.log("My name is " + this.name);
     }
 };
+
+
+
+
+//------------------------------------------------------------------------
+// ** Recuerda establecer la propiedad "constructor" al cambiar el prototipo **
+
+/**
+ * Hay un efecto secundario crucial de ajustar manualmente el prototipo a un nuevo objeto. ¡Elimina la 
+ * propiedad constructor! Esta propiedad puede ser usada para verificar cuál función de constructor creó 
+ * la instancia. Sin embargo, dado que la propiedad ha sido sobrescrita, ahora devuelve resultados falsos.
+ * 
+ * Para solucionar esto, cada vez que un prototipo se establece de forma manual a un nuevo objeto, 
+ * recuerda definir la propiedad constructor:
+*/
+
+Bird.prototype = {
+    constructor: Bird,
+    numLegs: 2,
+    eat: function() {
+      console.log("nom nom nom");
+    },
+    describe: function() {
+      console.log("My name is " + this.name); 
+    }
+};
+
+
+
+
+
+//------------------------------------------------------------------------
+// ** Entendiendo de donde viene el prototipo de un objeto **
+
+/**
+ * Los objteos tambien heredan su prototype directamente de la funcion constructor que lo creo. Por ejemplo.
+ *  
+*/
+
+function Bird(name){
+    this.name = name;
+}
+
+let duckt = new Bird("Donald");
+
+// duckt hereda su prototype de la funcion constructor Bird. Puedes mostrar esta relacion con el metodo
+// isPrototypeOf
+
+Bird.prototype.isPrototypeOf(duckt); // true
+
+
+
+
+//------------------------------------------------------------------------
+// ** Comprende la cadena "prototype" **
+
+/**
+ * Todos los objetos en JavaScript (con algunas excepciones) tienen un prototype. Además, el prototype de un 
+ * objeto en sí mismo es un objeto.
+*/
+
+function Bird(name) {
+  this.name = name;
+}
+
+typeof Bird.prototype;
+
+/**
+Debido a que prototype es un objeto, ¡unprototype puede tener su propio prototype! En este caso, el prototype 
+de Bird.prototype es Object.prototype:
+*/
+
+Object.prototype.isPrototypeOf(Bird.prototype);
+
+/*
+¿Por qué sería útil? Quizás recuerdes el método hasOwnProperty del desafío pasado:
+*/
+
+let duckg = new Bird("Donald");
+duckg.hasOwnProperty("name");
+
+/*
+El método hasOwnProperty se define en Object.prototype al cual se puede acceder con Bird.prototype, al que se 
+puede acceder con duck. Este es un ejemplo de la cadena prototype. En esta cadena prototype, Bird es el 
+supertype de duck mientras que duck es el subtype. Object es un supertype de Bird y duck. Object es un 
+supertype de todos los objetos en JavaScript. Por lo tanto, cualquier objeto puede utilizar el método 
+hasOwnProperty.
+*/
+
+
+
+
+
+//------------------------------------------------------------------------
+// **
