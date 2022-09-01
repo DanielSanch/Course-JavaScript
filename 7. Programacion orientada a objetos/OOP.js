@@ -350,4 +350,93 @@ hasOwnProperty.
 
 
 //------------------------------------------------------------------------
-// **
+// ** Usa herencia para que no te repitas **
+
+/**
+ * Hay un principio en la programacion llamado No te repitas (Don't Repeat Yourself "DRY"). La razon por la que
+ * el codigo repetido es un problmea es porque cualquier tipo de cambio requiere corregir en multiples lugares.
+ * Esto suelle significar mas trabajo para los programadores y mas espacio para errores.
+*/
+
+Bird.prototype = {
+    constructor: Bird,
+    describe: function() {
+      console.log("My name is " + this.name);
+    }
+  };
+  
+  Dog.prototype = {
+    constructor: Dog,
+    describe: function() {
+      console.log("My name is " + this.name);
+    }
+  };
+
+/**
+ * El metodo describe se repite en dos lugares. El codigo se puede editar para seguir el principio DRY creando un
+ * supertype (o padre) llamado Animal: 
+*/
+
+function Animal() { };
+
+Animal.prototype = {
+  constructor: Animal, 
+  describe: function() {
+    console.log("My name is " + this.name);
+  }
+};
+
+
+
+
+
+//------------------------------------------------------------------------
+// ** Hereda commportamientos de un supertipo (supertype) **
+
+/**
+ * Para poder usar los supertypes o la tecnica mejor conocida como herencia, se deben realizar dos pasos. 
+ * Primero crear una instancia con el operador new
+ */
+
+let animal = new Animal(); // Tiene algunas desventajas
+
+animal = Object.create(Animal.prototype); // La mejor opcion
+
+// Segundo paso es establecer el prototipo 
+
+Bird.prototype = Object.create(Animal.prototype);
+
+
+
+
+
+//------------------------------------------------------------------------
+// ** Restablece una propiedad "constructor" heredada **
+
+/**
+ * Cuando un objeto hereda el prototype de otro objeto, tambien hereda la propiedad del constructor del
+ * supertipo.
+ * 
+ * Solucion manual para cambiar el constructor
+ */
+
+duck.constructor; // supertype Animal
+
+Bird.prototype.constructor = Bird;
+duck.constructor; // Bird
+
+
+
+
+
+//------------------------------------------------------------------------
+// ** Añade metodos despues de la herencia **
+
+/**
+ * Una funcion constructor que hereda su objeto prototype de una funcion constructor "supertype" puede seguir
+ * teniendo sus propios metodos ademas de los heredados. 
+*/
+
+
+
+
