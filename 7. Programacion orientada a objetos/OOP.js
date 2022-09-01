@@ -440,3 +440,132 @@ duck.constructor; // Bird
 
 
 
+//------------------------------------------------------------------------
+// ** Sobreescribir metodos heredados **
+
+/**
+ * Es posible sobreescribir un metodo heredado. Se hace de la misma manera: agregando un metodo a ChildObject.
+ * prototype usando el mismo nombre de metodo que el que se va a sobreescribir.
+ */
+
+/**
+ * duck => Esta eat() definido aqui? No
+ * Bird => Esta eat() definido aqui? Si, ejecyta y detiene la busqueda
+ * Animal => 
+ */
+
+
+
+
+
+//------------------------------------------------------------------------
+// ** Utiliza un mixin oara añadir un comportamiento comun entre objetos no relacionados **
+
+/**
+ * Un mixin permite a otros objetos utilizar una coleccion de funciones 
+ */
+
+let flyMixin = function(obj){
+    obj.fly = function(){
+        console.log("Flying, wooosh!");
+    }
+}
+
+// El flyMixin toma a cualquier objeto y le da el metodo fly\
+
+let plane = {
+    model: "777",
+    numPassengers: 524
+};
+
+flyMixin(duck);
+flyMixin(plane);
+
+/**
+ * Aqui duck y plane son pasados a flyMixin el cual despues asigna la funcion fly acada objeto.
+ * Ahora duck y placne pueden volar.
+ */
+
+plane.fly();
+
+
+
+
+
+//------------------------------------------------------------------------
+// ** Utiliza closures para evitar que las propiedades de un objeto se puedan modificar desde afuera **
+
+/**
+ * Para evitar que se modifiquen las variables de un objeto, se puede hacer asi
+ */
+
+function Birdd(){
+    let hatchedEgg = 10;
+
+    this.getHatchedEggCount = function(){
+        return hatchedEgg;
+    };
+}
+
+let ducky = new Birdd();
+ducky.getHatchedEggCount();
+
+
+
+
+
+//------------------------------------------------------------------------
+// ** Comprende las funcinoes que son invocadas inmediatamente (IIFE) **
+
+(function () {
+    console.log("Chirp, chirp!");
+})();
+
+/**
+ * Esta es una expresión de función anónima que se ejecuta de inmediato y produce Chirp, chirp! 
+ * inmediatamente.
+ * 
+ * Ten en cuenta que la función no tiene nombre y que no se almacena en un valor. Los dos paréntesis () 
+ * al final de la expresión de la función hacen que se ejecute o invoque de forma inmediata. Este patrón 
+ * se conoce como una expresión de función inmediatamente invocada o IIFE (por sus siglas en inglés).
+ */
+
+
+
+
+
+//------------------------------------------------------------------------
+// ** Utiliza una IIFE para crear un modulo **
+
+/**
+ * Una expresion de funcion inmediatamente invocada se uliza para agrupar la funcinoalidad relacionada en un
+ * solo objeto o modulo.
+ */
+
+function glideMixin(obj) {
+    obj.glide = function() {
+      console.log("Gliding on the water");
+    };
+}
+function flyMixin(obj) {
+    obj.fly = function() {
+      console.log("Flying, wooosh!");
+    };
+}
+
+// Podemos agrupar estos misins en un modulo
+
+let motionModule = (function (){
+    return {
+        glideMixin: function(obj) {
+            obj.glide = funtion(){
+                console.log("Gliding on the water");
+            };
+        },
+        flyMixin: function(obj) {
+            obj.fly = function() {
+                console.log("Flying, wooosh!");
+            };
+        }
+    }
+})();
