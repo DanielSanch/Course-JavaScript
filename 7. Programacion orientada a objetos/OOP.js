@@ -558,7 +558,7 @@ function flyMixin(obj) {
 let motionModule = (function (){
     return {
         glideMixin: function(obj) {
-            obj.glide = funtion(){
+            obj.glide = function() {
                 console.log("Gliding on the water");
             };
         },
