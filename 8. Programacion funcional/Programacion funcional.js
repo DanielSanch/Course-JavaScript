@@ -99,4 +99,78 @@ const Window = function(tabs) {
  * En la programacion funcinal, cambiar o alterar cosas se denomina mutacion, y el resultado es conocido como
  * efecti secudario. Una funcion, idealmente, debe ser una funcion pura, lo que significa que no provoca ningun
  * efecfto secundario.
+*/
+
+
+
+
+//------------------------------------------------------------------------
+// ** Pasa argumentos para evitar la dependencia externa en una funcion **
+
+/**
+ * Un principio es declarar siempre sus dependencias de forma explicita, esto significa si una funcion depende de
+ * que una variable u objeto este presente, despues paasa esa variable u objeto directamente a la funcion como 
+ * argumento.
+ * 
+ * Puntos positivos
+ *  La funcion es mas facil de probar, se sabe exactamente lo que necesita y no dependera de nada mas en tu programa
+ * 
  */
+
+// La variable global
+let fixedValue = 4;
+
+// Cambia solo el código debajo de esta línea
+function incrementer(fixedValue) {
+  return fixedValue + 1;
+
+  // Cambia solo el código encima de esta línea
+}
+
+
+
+
+
+//------------------------------------------------------------------------
+// ** Usa el metodo map para extraer datos de un arreglo **
+
+/**
+ * El metodo map iterara sobre cada elemento de un arreglo y devuelve un nuevo arreglo que contiene los resultados
+ * de llamar a la funcion callback en cada elemento. Esto lo hace sin mutar el arreglo original.
+ * 
+ * map(user => user.name);
+*/
+
+
+const ratings = watchList.map(item =>
+  ({
+  title: item["Title"],
+  rating: item["imdbRating"]
+})
+);
+
+console.log(JSON.stringify(ratings));
+
+
+/**
+ * Escribe tu propio Array.prototype.myMap(), el cual debe comportarse exactamente como Array.prototype.map(). 
+ * No debes utilizar el método incorporado map. Se puede acceder a la instancia de Array en el método myMap 
+ * usando this.
+ */
+
+// La variable global
+const s = [23, 65, 98, 5];
+
+Array.prototype.myMap = function(callback) {
+  const newArray = [];
+  // Cambia solo el código debajo de esta línea
+  for (let i = 0; i < this.length; i++){
+    newArray.push(callback(this[i]));
+  }
+  // Cambia solo el código encima de esta línea
+  return newArray;
+};
+
+const new_s = s.myMap(function(item) {
+  return item * 2;
+});
